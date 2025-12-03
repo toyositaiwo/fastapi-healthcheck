@@ -1,14 +1,12 @@
-cat << 'EOF' > deploy.sh
 #!/bin/bash
 
-cd /root/fastapi-healthcheck
+# Change to correct project directory
+cd /home/ubuntu/fastapi-healthcheck || exit
 
-echo "Pulling latest changes..."
+# Pull latest code
 git pull origin main
 
-echo "Restarting FastAPI service..."
-systemctl restart fastapi
+# Restart FastAPI service with sudo
+sudo systemctl restart fastapi
 
 echo "Deployment complete."
-EOF
-
